@@ -17,9 +17,10 @@ resource "aws_instance" "master_app_server" {
   ami                    = var.master_amiID
   instance_type          = var.instance_type
   vpc_security_group_ids = [var.ec2sgid]
+  subnet_id              = var.subnet1_id
 
   tags = {
-    Name = "TerraformJenkinsMaster"
+    Name = "TerraformMasterJenkins"
   }
 
   user_data = <<-EOF
@@ -36,9 +37,10 @@ resource "aws_instance" "slave_app_server" {
   ami                    = var.slave_amiID
   instance_type          = var.instance_type
   vpc_security_group_ids = [var.ec2sgid]
+  subnet_id              = var.subnet1_id
 
   tags = {
-    Name = "TerraformJenkinsSlave"
+    Name = "TerraformSlaveJenkins"
   }
 
   user_data = <<-EOF
@@ -50,6 +52,6 @@ resource "aws_instance" "slave_app_server" {
 }
 
 resource "aws_kms_key" "mykey" {
-  description             = "This key is used to encrypt bucket objects"
+  description             = "This key is used in instances"
   deletion_window_in_days = 10
 }

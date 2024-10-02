@@ -9,6 +9,12 @@ variable "region" {
   type        = string
   default     = "ca-central-1"
 }
+  
+variable "subnet1_id" {
+  description = "Enter your VPC Subnet1 ID"
+  type        = string
+  default     = "subnet-080822177c455cfc3"
+}
 
 variable "master_amiID" {
   description = "Master EC2 AMI ID"
