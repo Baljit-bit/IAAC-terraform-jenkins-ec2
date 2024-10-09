@@ -47,7 +47,7 @@ resource "aws_security_group" "sg_terraform" {
 }
 
 resource "aws_instance" "ec2_app_server" {
-  ami                    = var.master_amiID
+  ami                    = var.amiID
   instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.sg_terraform.id]
   subnet_id              = var.subnet_id
